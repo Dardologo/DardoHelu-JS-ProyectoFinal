@@ -64,6 +64,16 @@ const eliminarDelCarrito = (e) => {
     productosEnCarrito.splice(index, 1);
     cargarProductosCarrito();
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    Toastify({
+        text: "Producto Eliminado",
+        style: {
+          background: "linear-gradient(to right, #c1121f, #f48c06)",
+        },
+        offset: {
+          x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+          y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+      }).showToast();
 
 }
 
@@ -92,10 +102,21 @@ const comprarCarrito = () =>{
     contenedorCarritoProductos.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
-  
+    Toastify({
+        text: "¡Ha realizado la compra con éxito!",
+        style: {
+            background: "linear-gradient(to right, #28a745, #218838)",
+        },
+        offset: {
+            x: 50,
+            y: 10
+        },
+    }).showToast();
 }
 
 botonComprar.addEventListener("click", comprarCarrito);
+//botonComprar.addEventListener("click", compra);
+
 
 
 

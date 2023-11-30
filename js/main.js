@@ -7,7 +7,11 @@ fetch("../json/productos.json")
 }
 )
 .catch((e) => {
-    alert(e);
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Los productos no han podido ser cargados',
+      })
 })
 
 //Elementos DOM
@@ -53,7 +57,16 @@ const agregarAlCarrito = (e)=> {
         productoAgregado.cantidad = 1;
         productosEnCarrito.push(productoAgregado);
     }
-  
+    Toastify({
+        text: "Producto agreado",
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+        offset: {
+          x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+          y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        },
+      }).showToast();
     actualizarNumero();
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
 }
@@ -81,7 +94,13 @@ const cargarProductos = (productosElegidos) => {
  
 }
 
-
+function compra(){
+    Swal.fire({
+      icon: 'information',
+      title: 'Compra Exitosa',
+      text: 'Perfecto, has comprado los productos',
+    })
+  }
 //cargarProductos(productos);
 
 botonesCategorias.forEach(boton => {
